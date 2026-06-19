@@ -128,6 +128,7 @@ No `style.css`:
 ```
 
 ---
+<img width="926" height="827" alt="image" src="https://github.com/user-attachments/assets/ef828c6f-514d-441b-9639-5e7cdb9fbb64" />
 
 ## 📡 Exemplo de Query (InfluxDB / SNMP)
 
@@ -155,14 +156,4 @@ WHERE $timeFilter
 
 ## 📄 Licença
 
-MIT — sinta-se livre para usar, modificar e distribuir.
-
----
-
-## 🤝 Contribuições
-
-PRs são bem-vindos! Abra uma issue para sugestões de melhorias como:
-
-- Suporte a múltiplas baterias
-- Alertas visuais piscantes em nível crítico
-- Temas claro/escuro
+MIT - sinta-se livre para usar, modificar e distribuir. Se este card te ajudou e você for compartilhar em alguma rede social, blog ou fórum, considere fazer uma referência a este repositório como base. Isso ajuda a comunidade a encontrar o projeto e contribui para que mais pessoas se beneficiem da solução. 🙌 🔗
