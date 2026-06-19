@@ -1,4 +1,4 @@
-# 🔋 Battery Card — Grafana HTML Graphics
+# 🔋 Battery Card - Grafana HTML Graphics
 
 > Card visual interativo para monitoramento de bateria/nobreak no Grafana, usando o plugin **HTML Graphics**.
 
@@ -13,7 +13,7 @@ Este card exibe em tempo real:
 - **Nível da bateria** (%) com barra visual animada
 - **Status dinâmico** com código de cores por faixa de carga
 - **Tempo de carga** em minutos (calculado a partir do campo `runtime` em segundos)
-- **Modo operacional** — `CARREGANDO` ou `ESTÁVEL`
+- **Modo operacional** -`CARREGANDO` ou `ESTÁVEL`
 
 ---
 
@@ -33,8 +33,8 @@ Este card exibe em tempo real:
 - **Grafana** v8.0+
 - Plugin **[HTML Graphics](https://grafana.com/grafana/plugins/gapit-htmlgraphics-panel/)** instalado
 - Fonte de dados com campos:
-  - `capacity` — nível da bateria em `%` (0–100)
-  - `runtime` — tempo de carga em **segundos**
+  - `capacity` -nível da bateria em `%` (0–100)
+  - `runtime` -tempo de carga em **segundos**
 
 ---
 
@@ -64,7 +64,7 @@ No editor do painel, cole o conteúdo de cada arquivo na aba correspondente:
 
 ### 4. Configure a fonte de dados
 
-Certifique-se de que sua query retorna campos com os nomes `capacity` e `runtime` (ou contendo essas palavras — a detecção é por `includes`).
+Certifique-se de que sua query retorna campos com os nomes `capacity` e `runtime` (ou contendo essas palavras -a detecção é por `includes`).
 
 ---
 
