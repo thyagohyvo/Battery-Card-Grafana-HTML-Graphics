@@ -1,1 +1,99 @@
+const levelEl = htmlNode.getElementById('battery_level');
+const loadEl = htmlNode.getElementById('battery_load');
+const fillEl = htmlNode.getElementById('battery_fill');
+const statusEl = htmlNode.getElementById('battery_status');
+const modeEl = htmlNode.getElementById('battery_mode');
 
+let batteryPercent = null;
+let runtimeRaw = null;
+
+// 🔍 percorre todas as séries e campos
+if (data && data.series) {
+  data.series.forEach(serie => {
+
+    serie.fields.forEach(field => {
+
+      const name = field.name.toLowerCase();
+      const length = field.values.length;
+
+      if (length === 0) return;
+
+      const value = field.values.get(length - 1);
+
+      if (value === null || value === undefined) return;
+
+      // 🔋 capacidade
+      if (name.includes("capacity")) {
+        batteryPercent = value;
+      }
+
+      // ⏱ runtime
+      if (name.includes("runtime")) {
+        runtimeRaw = value;
+      }
+
+    });
+
+  });
+}
+
+// 🚨 valida bateria
+if (batteryPercent === null) {
+  if (levelEl) levelEl.textContent = "--%";
+  if (loadEl) loadEl.textContent = "--";
+  return;
+}
+
+const percent = Math.round(batteryPercent);
+
+// 🔋 nível
+if (levelEl) levelEl.textContent = percent + "%";
+if (fillEl) fillEl.style.height = percent + "%";
+
+// 🎨 status por nível
+let color, status;
+
+if (percent <= 20) {
+  color = "#ef4444";
+  status = "CRÍTICO";
+} 
+else if (percent <= 50) {
+  color = "#f97316";
+  status = "BAIXO";
+} 
+else if (percent <= 80) {
+  color = "#eab308";
+  status = "ATENÇÃO";
+} 
+else {
+  color = "#22c55e";
+  status = "NORMAL";
+}
+
+if (fillEl) fillEl.style.background = color;
+if (statusEl) {
+  statusEl.textContent = status;
+  statusEl.style.color = color;
+}
+
+// ⏱️ runtime SEMPRE em minutos
+if (runtimeRaw !== null) {
+
+  const totalMinutes = Math.round(runtimeRaw / 60);
+
+  if (loadEl) loadEl.textContent = totalMinutes + " min";
+
+} else {
+  if (loadEl) loadEl.textContent = "--";
+}
+
+// ⚡ modo (simples e funcional)
+if (modeEl) {
+  if (percent < 100) {
+    modeEl.textContent = "CARREGANDO";
+    modeEl.style.color = "#22c55e";
+  } else {
+    modeEl.textContent = "ESTÁVEL";
+    modeEl.style.color = "#9ca3af";
+  }
+}
